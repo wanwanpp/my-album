@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wp.dao.ImageDao">
+    <resultMap id="image" type="Image">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+        <result property="date" column="date"/>
+        <result property="user.id" column="user_id"/>
+    </resultMap>
+    <select id="getByUserId" parameterType="hashMap" resultMap="image">
+        SELECT
+            id,
+            name,
+            url,
+            date,
+            user_id
+        FROM image
+        WHERE user_id = #{userId}
+        ORDER BY date DESC
+    </select>
+
+    <delete id="delById" parameterType="hashMap">
+        DELETE FROM image WHERE id=#{id}
+    </delete>
+
+    <insert id="addImage" parameterType="Image">
+        INSERT INTO image(name, url, date, user_id) VALUES (#{name},#{url},#{date},#{user.id})
+    </insert>
+</mapper>
