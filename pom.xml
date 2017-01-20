@@ -139,6 +139,7 @@
       <version>3.0.1</version>
     </dependency>
 
+    <!--配合springmvc.xml中的multipartResolver配置上传文件使用-->
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
